@@ -1,8 +1,10 @@
 require 'sinatra'
 require 'sinatra/reloader'
+require './helpers/guess_helper'
 
-random_number = rand(100).to_s
+set :secret_number, rand(100)
 
 get '/' do
-  erb :index, locals: { random_number: random_number }
+  guess = check_guess(params["guess"].to_i) if params["guess"]  
+  erb :index, locals: { random_number: settings.secret_number, guess: guess }
 end

@@ -1,12 +1,20 @@
 <html>
-  <head></head>
+  <head>
+    <style>
+      .blue { color: blue; }
+      .red { color: red; }
+    </style>
+  </head>
   <body>
     <form>
       <input type="text" name="guess">
       <input type="submit" value="Guess!">
     </form>
-    <% if guess %>
-    <p><%= guess %></p>
+    <% if answer %>
+    <p class="blue"><%= answer %></p>
+    <% end %>
+    <% if tries > 0 && tries < 5 %>
+    <p class="red"><%= "You have #{5 - tries} more guesses"%></p>
     <% end %>
   </body>
 </html>
